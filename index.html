@@ -3,14 +3,22 @@
 
 <head>
 
-    <title>Zadanie 4</title>
+    <title>Zadanie 6a. Efekty specjalne (animacje)</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="Author" content="Łukasz Krawczyk (Web Developer / Graphic &amp; Web Designer)" />
 
     <style>
-        td img:hover {
-            cursor: pointer;
+        input[type="button"] {
+            font-size: large;
+        }
+
+        div {
+            width: 300px;
+            height: 175px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            position: absolute;
         }
     </style>
 
@@ -18,9 +26,14 @@
 
     <script>
         $(() => {
-            $('td img').click(function () {
-                const src = $(this).attr('src')
-                $('div img').attr('src', src.replace('100x75', '400x300'))
+            $('input').click(function () {
+                const direction = $(this).attr('value')
+
+                if (direction === "W lewo") {
+                    $('div').animate({ right: '+=400' }, 2000, 'swing')
+                } else if (direction === "W prawo") {
+                    $('div').animate({ right: '-=400' }, 2000, 'swing')
+                }
             })
         })
     </script>
@@ -29,21 +42,9 @@
 
 <body>
 
-    <table>
-        <tbody>
-            <tr>
-                <td><img src="100x75/chrysanthemum.jpg" alt="Chrysanthemum" /></td>
-                <td><img src="100x75/desert.jpg" alt="Desert" /></td>
-                <td><img src="100x75/hydrangeas.jpg" alt="Hydrangeas" /></td>
-                <td><img src="100x75/jellyfish.jpg" alt="Jellyfish" /></td>
-                <td><img src="100x75/koala.jpg" alt="Koala" /></td>
-                <td><img src="100x75/lighthouse.jpg" alt="Lighthouse" /></td>
-                <td><img src="100x75/penguins.jpg" alt="Penguins" /></td>
-                <td><img src="100x75/tulips.jpg" alt="Tulips" /></td>
-            </tr>
-        </tbody>
-    </table>
-    <div><img src="#" alt="" /></div>
+    <input type="button" value="W lewo" />
+    <input type="button" value="W prawo" />
+    <div></div>
 
 </body>
 
